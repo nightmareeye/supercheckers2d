@@ -377,6 +377,98 @@ public:
 			else return 1;
 		}
 	}
+	bool queen_eat_checker() { // дамка рубит шашку
+		int x_eat = 0;
+		int y_eat = 0;
+		if ((centre_on_square().x - 87) / 80 - x >= 2 && (centre_on_square().y - 87) / 80 - y >= 2) {
+			int i = x;
+			int j = y;
+			while (1) {
+				if (i < (centre_on_square().x - 87) / 80 - 1 && j < (centre_on_square().y - 87) / 80 - 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j + 1).get_free() == 1) {
+						x_eat = i + 1;
+						y_eat = j + 1;
+						break;
+					}
+					else {
+						i++;
+						j++;
+					}
+				}
+				else break;
+			}
+		}
+		if ((centre_on_square().x - 87) / 80 - x >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
+			int i = x;
+			int j = y;
+			while (1) {
+				if (i < (centre_on_square().x - 87) / 80 - 1 && j >(centre_on_square().y - 87) / 80 + 1) {
+					if (checkers_on_board.get_board().get_all_squares(i + 1, j - 1).get_free() == 1) {
+						x_eat = i + 1;
+						y_eat = j - 1;
+						break;
+					}
+					else {
+						i++;
+						j--;
+					}
+				}
+				else break;
+			}
+		}
+		if (x - (centre_on_square().x - 87) / 80 >= 2 && (centre_on_square().y - 87) - y / 80 >= 2) {
+			int i = x;
+			int j = y;
+			while (1) {
+				if (i > (centre_on_square().x - 87) / 80 + 1 && j < (centre_on_square().y - 87) / 80 - 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j + 1).get_free() == 1) {
+						x_eat = i - 1;
+						y_eat = j + 1;
+						break;
+					}
+					else {
+						i--;
+						j++;
+					}
+				}
+				else break;
+			}
+		}
+		if (x - (centre_on_square().x - 87) / 80 >= 2 && y - (centre_on_square().y - 87) / 80 >= 2) {
+			int i = x;
+			int j = y;
+			while (1) {
+				if (i > (centre_on_square().x - 87) / 80 + 1 && j > (centre_on_square().y - 87) / 80 + 1) {
+					if (checkers_on_board.get_board().get_all_squares(i - 1, j - 1).get_free() == 1) {
+						x_eat = i - 1;
+						y_eat = j - 1;
+						break;
+					}
+					else {
+						i--;
+						j--;
+					}
+				}
+				else break;
+			}
+		}
+
+		for (int f = 0; f < checkers_on_board.get_size(); f++) {
+			if (checkers_on_board.get_checker(f).get_x() == x_eat && checkers_on_board.get_checker(f).get_y() == y_eat) {
+				checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(f).get_x(), checkers_on_board.get_checker(f).get_y()).cell_free_0();
+
+				for (int c = f; c < checkers_on_board.get_size() - 1; c++) {
+					checkers_on_board.get_checker(c) = checkers_on_board.get_checker(c + 1);
+				}
+				checkers_on_board.delete_checker();
+				if (f < checker_num) {
+					checker_num = checker_num - 1;
+				}
+				return 1;
+			}
+		}
+		return 0;
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
