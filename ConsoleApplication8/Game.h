@@ -121,6 +121,10 @@ public:
 			}
 		}
 	}
+	void make_move(RenderWindow& window, Event event) { // выполнение хода шашки
+		choise_of_checker(window, event);
+		hod(window, event);
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
