@@ -155,6 +155,50 @@ public:
 			chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color());
 		}
 	}
+	bool chance_eat_checker(bool color) {
+		bool more = 1;
+		if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free()) { 
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_checker_color() != color) {
+				if (checkers_on_board.get_board().get_all_squares(x + 2, y + 2).get_free() == 0) {
+					if (end_board(x + 2, y + 2)) {
+						checkers_on_board.get_board().get_all_squares(x + 2, y + 2).on_fon_active(); 
+						more = 0;
+					}
+				}
+			}
+		}
+		if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_free()) {
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y + 1).get_checker_color() != color) {
+				if (checkers_on_board.get_board().get_all_squares(x - 2, y + 2).get_free() == 0) {
+					if (end_board(x - 2, y + 2)) {
+						checkers_on_board.get_board().get_all_squares(x - 2, y + 2).on_fon_active();
+						more = 0;
+					}
+				}
+			}
+		}
+		if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_free()) {
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_checker_color() != color) {
+				if (checkers_on_board.get_board().get_all_squares(x + 2, y - 2).get_free() == 0) {
+					if (end_board(x + 2, y - 2)) {
+						checkers_on_board.get_board().get_all_squares(x + 2, y - 2).on_fon_active();
+						more = 0;
+					}
+				}
+			}
+		}
+		if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_free()) {
+			if (checkers_on_board.get_board().get_all_squares(x - 1, y - 1).get_checker_color() != color) {
+				if (checkers_on_board.get_board().get_all_squares(x - 2, y - 2).get_free() == 0) {
+					if (end_board(x - 2, y - 2)) {
+						checkers_on_board.get_board().get_all_squares(x - 2, y - 2).on_fon_active();
+						more = 0;
+					}
+				}
+			}
+		}
+		return more;
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
