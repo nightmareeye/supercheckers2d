@@ -71,4 +71,4 @@ private:
 	bool superior = 0;// 1 если шашка дамка, 0 если нет
 	Texture checker_texture;// текстура значка дамки
 	Sprite sprite;// спрайт значка дамки
-}
+};
