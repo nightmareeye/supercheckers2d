@@ -1,0 +1,43 @@
+#include <SFML/Graphics.hpp>
+using namespace sf;
+
+class Square {
+public:
+
+	RectangleShape& get_cell() { // передает клетку
+		return this->cell;
+	}
+	bool get_fon_active() { // передает есть ли подцветка
+		return this->fon_active;
+	}
+	bool get_free() { // свободна ли клетку
+		return this->free;
+	}
+	bool get_checker_color() { // передает цвет клетки
+		return this->checker_color;
+	}
+	void off_fon_active() { // убрать подцветку
+		this->fon_active = 0;
+	}
+	void on_fon_active() { // добавить подцветку
+		this->fon_active = 1;
+	}
+	void cell_free_0() { // освобождает клетку
+		this->free = 0;
+	}
+	void cell_free_1(bool color) { // занимает клетку шашкой с цветом color
+		this->free = 1;
+		this->checker_color = color;
+	}
+	void set_color(Color color) { // присвоение цвета клетки
+		this->cell.setFillColor(color);
+	}
+	void set_position(float x, float y) { // присвоение координат х, у клетке
+		this->cell.setPosition(x, y);
+	}
+private:
+	bool fon_active = 0; // 1 подцветки есть, 0 = нет подцветки 
+	bool free = 0; // 1 = заняте клетки, 0 = свободные клетки
+	bool checker_color; // 1 = черные шашки, 0 = белые шашки
+	RectangleShape cell = RectangleShape(Vector2f(80, 80)); // клетка размером 80х80
+};
