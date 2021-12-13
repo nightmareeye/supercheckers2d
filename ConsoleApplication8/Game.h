@@ -475,6 +475,32 @@ public:
 		}
 		return 0;
 	}
+	bool if_you_can_eat_you_must_eat(bool color) {
+		while (eat_checkers.size() != 0) {
+			eat_checkers.pop_back();
+		}
+		for (int i = 0; i < checkers_on_board.get_size(); i++) {
+			if (checkers_on_board.get_checker(i).get_color() == color) {
+				if (checkers_on_board.get_checker(i).check_superior() == 0) {  // проверка на дамку
+					x = checkers_on_board.get_checker(i).get_x();
+					y = checkers_on_board.get_checker(i).get_y();
+					if (!chance_eat_checker(color)) {
+						eat_checkers.push_back(i);
+					}
+				}
+				if (checkers_on_board.get_checker(i).check_superior() == 1) { // проверка на дамку
+					x = checkers_on_board.get_checker(i).get_x();
+					y = checkers_on_board.get_checker(i).get_y();
+					if (queen_square_for_move(color, 1, 1, 1, 1)) {
+						eat_checkers.push_back(i);
+					}
+				}
+			}
+		}
+		checkers_on_board.delete_backlight();
+		if (eat_checkers.size() != 0) return 1;
+		else return 0;
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
