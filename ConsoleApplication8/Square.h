@@ -22,6 +22,13 @@ public:
 	void on_fon_active() { // добавить подцветку
 		this->fon_active = 1;
 	}
+	void cell_free_0() { // освобождает клетку
+		this->free = 0;
+	}
+	void cell_free_1(bool color) { // занимает клетку шашкой с цветом color
+		this->free = 1;
+		this->checker_color = color;
+	}
 private:
 	bool fon_active = 0; // 1 подцветки есть, 0 = нет подцветки 
 	bool free = 0; // 1 = заняте клетки, 0 = свободные клетки
