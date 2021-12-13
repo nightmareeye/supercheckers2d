@@ -502,12 +502,12 @@ public:
 		else return 0;
 	}
 private:
-	bool move_color = 0; 
-	bool selection = 0; 
-	int checker_num; 
-	float x; 
-	float y; 
-	Vector2i pos_of_mouse; 
+	bool move_color = 0; // 0 - ход белых, 1 - ход черных
+	bool selection = 0; // 0 - фигуры не выбрана, 1 - выбрана
+	int checker_num; // номер выбранной для хода шашки
+	float x; // номер клетки в которой шашка по оси х
+	float y; // номер клетки в которой шашка по оси у
+	Vector2i pos_of_mouse; // позиция мыши
 	Checkers_on_board checkers_on_board;
-	vector <int> eat_checkers; \
+	vector <int> eat_checkers; // шашки, которые могут съесть
 };
