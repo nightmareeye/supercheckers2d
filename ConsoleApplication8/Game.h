@@ -469,6 +469,12 @@ public:
 		}
 		return 0;
 	}
+	bool end_board(float x, float y) { // проверка выходы за пределы поля
+		if (x >= 0 && x < 8 && y >= 0 && y < 8) {
+			return 1;
+		}
+		return 0;
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
