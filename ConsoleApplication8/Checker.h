@@ -54,15 +54,16 @@ public:
 		this->set_position(x_position, y_position); 
 		this->choice = 0; 
 	}
-	void draw_checker(RenderWindow& window) { 
+	void draw_checker(RenderWindow& window) {
 		window.draw(this->checker);
-		if (superior == 1) { 
-			this->checker_texture.loadFromFile("Images//Queen.png"); 
-			this->sprite.setTexture(checker_texture); 
-			this->sprite.setTextureRect(IntRect(-22, -22, 45, 45)); 
-			this->sprite.setPosition(this->check_position().x, this->check_position().y); 
+		if (superior == 1) {
+			this->checker_texture.loadFromFile("Images//Queen.png");
+			this->sprite.setTexture(checker_texture);
+			this->sprite.setTextureRect(IntRect(-22, -22, 45, 45));
+			this->sprite.setPosition(this->check_position().x, this->check_position().y);
 		}
 		window.draw(this->sprite);
+	}
 private:
 	CircleShape checker = CircleShape(35);
 	bool checker_color;
