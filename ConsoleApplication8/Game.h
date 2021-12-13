@@ -199,6 +199,26 @@ public:
 		}
 		return more;
 	}
+	bool eat_checker() { // рубление шашки
+		if ((centre_on_square().x - 87) / 80 - x == 2 || (centre_on_square().x - 87) / 80 - x == -2 &&
+			(centre_on_square().y - 87) / 80 - y == 2 || (centre_on_square().y - 87) / 80 - y == -2) {
+			for (int i = 0; i < checkers_on_board.get_size(); i++) {
+				if (checkers_on_board.get_checker(i).get_x() == x + (checkers_on_board.get_checker(checker_num).get_x() - x) / 2 &&
+					checkers_on_board.get_checker(i).get_y() == y + (checkers_on_board.get_checker(checker_num).get_y() - y) / 2) {
+					checkers_on_board.get_board().get_all_squares(checkers_on_board.get_checker(i).get_x(), checkers_on_board.get_checker(i).get_y()).cell_free_0();
+					for (int j = i; j < checkers_on_board.get_size() - 1; j++) {
+						checkers_on_board.get_checker(j) = checkers_on_board.get_checker(j + 1);
+					}
+					checkers_on_board.delete_checker();
+					if (i < checker_num) {
+						checker_num = checker_num - 1;
+					}
+					return 1;
+				}
+			}
+		}
+		return 0;
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
