@@ -121,13 +121,13 @@ public:
 			}
 		}
 	}
-	void make_move(RenderWindow& window, Event event) {
+	void make_move(RenderWindow& window, Event event) { // выполнение хода шашки
 		choise_of_checker(window, event);
 		hod(window, event);
 	}
-	void square_for_move() { 
+	void square_for_move() { // варианты хода шашки
 		if (checkers_on_board.get_checker(checker_num).get_color()) {
-			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free() == 0) { 
+			if (checkers_on_board.get_board().get_all_squares(x + 1, y + 1).get_free() == 0) { // проверка вакантных мест снизу
 				if (end_board(x + 1, y + 1)) {
 					checkers_on_board.get_board().get_all_squares(x + 1, y + 1).on_fon_active();
 				}
@@ -138,7 +138,7 @@ public:
 				}
 			}
 		}
-		else {
+		else { // проверка вакантных мест сверху
 			if (checkers_on_board.get_board().get_all_squares(x + 1, y - 1).get_free() == 0) {
 				if (end_board(x + 1, y - 1)) {
 					checkers_on_board.get_board().get_all_squares(x + 1, y - 1).on_fon_active();
@@ -150,7 +150,7 @@ public:
 				}
 			}
 		}
-		if (!chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color())) { 
+		if (!chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color())) { // есть ли варианты съесть шашку
 			checkers_on_board.delete_backlight();
 			chance_eat_checker(checkers_on_board.get_checker(checker_num).get_color());
 		}
