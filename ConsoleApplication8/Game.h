@@ -72,14 +72,14 @@ public:
 			}
 		}
 	}
-	void hod(RenderWindow& window, Event event) {  
+	void hod(RenderWindow& window, Event event) { // ход шашки 
 		if (event.type == Event::MouseButtonPressed) {
 			if (event.key.code == Mouse::Right) {
-				if (checkers_on_board.get_checker(checker_num).check_select() == 1 && selection == 1) {
+				if (checkers_on_board.get_checker(checker_num).check_select() == 1 && selection == 1) { // если шашка выбрана
 					mouse_pos(window);
 					if (checkers_on_board.get_board().get_all_squares((centre_on_square().x - 87) / 80, (centre_on_square().y - 87) / 80).get_fon_active()) {
 						checkers_on_board.get_board().get_all_squares(x, y).cell_free_0();
-						if (checkers_on_board.get_checker(checker_num).check_superior() == 1) {
+						if (checkers_on_board.get_checker(checker_num).check_superior() == 1) { // если шашка дамка
 							checkers_on_board.get_checker(checker_num).set_position(centre_on_square().x, centre_on_square().y);
 							if (queen_eat_checker()) {
 								x = (centre_on_square().x - 87) / 80;
