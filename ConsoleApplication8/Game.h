@@ -219,6 +219,18 @@ public:
 		}
 		return 0;
 	}
+	void make_queen() { // делаем дамкой
+		if (checkers_on_board.get_checker(checker_num).get_color() == 0) { // для белых
+			if (checkers_on_board.get_checker(checker_num).get_y() == 0) {
+				checkers_on_board.get_checker(checker_num).make_superior();
+			}
+		}
+		if (checkers_on_board.get_checker(checker_num).get_color() == 1) { // для черных
+			if (checkers_on_board.get_checker(checker_num).get_y() == 7) {
+				checkers_on_board.get_checker(checker_num).make_superior();
+			}
+		}
+	}
 private:
 	bool move_color = 0; 
 	bool selection = 0; 
