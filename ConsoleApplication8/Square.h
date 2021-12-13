@@ -29,6 +29,12 @@ public:
 		this->free = 1;
 		this->checker_color = color;
 	}
+	void set_color(Color color) { // присвоение цвета клетки
+		this->cell.setFillColor(color);
+	}
+	void set_position(float x, float y) { // присвоение координат х, у клетке
+		this->cell.setPosition(x, y);
+	}
 private:
 	bool fon_active = 0; // 1 подцветки есть, 0 = нет подцветки 
 	bool free = 0; // 1 = заняте клетки, 0 = свободные клетки
