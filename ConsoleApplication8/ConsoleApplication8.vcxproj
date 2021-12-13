@@ -143,6 +143,7 @@
     <ClCompile Include="shashki.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
     <ClInclude Include="Checker.h" />
     <ClInclude Include="Square.h" />
   </ItemGroup>
